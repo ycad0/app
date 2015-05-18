@@ -1,7 +1,7 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "name": "gintonicweb/app",
+    "description": "GintonicCMS skeleton app",
+    "homepage": "http://gintonicweb.com",
     "type": "project",
     "license": "MIT",
     "require": {
