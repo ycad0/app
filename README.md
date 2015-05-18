@@ -1,9 +1,8 @@
 # CakePHP Application Skeleton
 
-[![Build Status](https://api.travis-ci.org/cakephp/app.png)](https://travis-ci.org/cakephp/app)
-[![License](https://poser.pugx.org/cakephp/app/license.svg)](https://packagist.org/packages/cakephp/app)
+[![License](https://poser.pugx.org/cakephp/app/license.svg)](https://packagist.org/packages/gintonicweb/app)
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.0.
+A skeleton for creating applications with [GintonicCMS](http://cms.gintonicweb.com)
 
 The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
 
@@ -14,7 +13,7 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 If Composer is installed globally, run
 ```bash
-composer create-project --prefer-dist cakephp/app [app_name]
+composer create-project --prefer-dist gintoniweb/app [app_name]
 ```
 
 You should now be able to visit the path to where you installed the app and see
