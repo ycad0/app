@@ -1,5 +1,4 @@
 /vendor/*
 /config/app.php
-/bin/cake.bat
 /tmp/*
 /logs/*
