@@ -20,6 +20,10 @@ use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 
 $this->helpers()->load('GintonicCMS.Require');
+
+// TODO: show bare layout until the admin account has been created
+// Use Gintonic's gree in variables.less to create bare layout
+// $this->layout = 'GintonicCMS.bare';
 ?>
 
 <div class="jumbotron">
