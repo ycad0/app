@@ -96,6 +96,7 @@ class Installer
     public static function createWritableDirectories($dir, $io)
     {
         $paths = [
+            'assets',
             'logs',
             'tmp',
             'tmp/cache',

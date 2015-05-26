@@ -50,7 +50,22 @@ $this->helpers()->load('GintonicCMS.Require');
             <button class="btn btn-lg btn-default">Setup MetaData</button>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-lg btn-default">Build Assets</button>
+
+            <div class="panel panel-default">
+            <panel-body>
+                <?php if (is_writable(ASSETS)): ?>
+                    <div class="alert alert-success">
+                        <p>Your assets directory is writable.</p>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-danger">
+                        <p>Your assets directory is NOT writable.</p>
+                    </div>
+                <?php endif; ?>
+                <button class="btn btn-lg btn-default">Build Assets</button>
+            </panel-body>
+            </div>
+
         </div>
     </div>
     <hr>
@@ -206,7 +221,7 @@ $this->helpers()->load('GintonicCMS.Require');
     </div>
     <div class="row">
         <div class="col-md-4">
-            <h2>ReactJS</h2>
+            <h2>React</h2>
             <p>A javascript library for building user interfaces. React abstracts away the DOM from you, giving a simpler programming model and better performance.</p>
             <ul>
                 <li><a href="https://facebook.github.io/react/">React</a></li>
