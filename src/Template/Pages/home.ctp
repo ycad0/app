@@ -23,7 +23,7 @@ $this->helpers()->load('GintonicCMS.Require');
 
 // TODO: show bare layout until the admin account has been created
 // Use Gintonic's gree in variables.less to create bare layout
-// $this->layout = 'GintonicCMS.bare';
+$this->layout = 'GintonicCMS.bare';
 ?>
 
 <div class="jumbotron">
@@ -209,50 +209,36 @@ $this->helpers()->load('GintonicCMS.Require');
     </div>
     <div class="row">
         <div class="col-md-4">
-            <h2>Gintonic CMS</h2>
+            <h2>GintonicCMS</h2>
             <p>Built on top of CakePHP 3, GintonicCMS provides a robust and extensible core for your apps by wrapping powerful tools and a seamless base.</p>
-            <ul>
-                <li><a href="http://cms.gintonicweb.com">GintonicCMS documentation</a></li>
-                <li><a href="http://gintonicweb.com">Gintonic Web</a></li>
-            </ul>
+            <a href="http://cms.gintonicweb.com">http://cms.gintonicweb.com</a>
         </div>
         <div class="col-md-4">
             <h2>CakePHP</h2>
             <p>CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Front Controller and MVC</p>
-            <ul>
-                <li><a href="http://cakephp.org/">CakePHP</a></li>
-                <li><a href="http://book.cakephp.org/3.0/en/index.html">Cakephp 3 Documentation</a></li>
-            </ul>
+            <a href="http://cakephp.org">http://cakephp.org</a>
         </div>
         <div class="col-md-4">
             <h2>Bootstrap</h2>
             <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
-            <ul>
-                <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
-            </ul>
+            <a href="http://getbootstrap.com">http://getbootstrap.com</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <h2>React</h2>
             <p>A javascript library for building user interfaces. React abstracts away the DOM from you, giving a simpler programming model and better performance.</p>
-            <ul>
-                <li><a href="https://facebook.github.io/react/">React</a></li>
-            </ul>
+            <a href="https://facebook.github.io/react">https://facebook.github.io/react</a>
         </div>
         <div class="col-md-4">
             <h2>RequireJS</h2>
             <p>RequireJS is a JavaScript file and module loader. RequireJS will improve the speed and quality of your code.</p>
-            <ul>
-                <li><a href="http://requirejs.org/">RequireJS</a></li>
-            </ul>
+            <a href="http://requirejs.org">http://requirejs.org</a>
         </div>
         <div class="col-md-4">
             <h2>Ratchet</h2>
             <p>A loosely coupled PHP library providing tools to create real time, bi-directional applications between clients and servers over WebSockets.</p>
-            <ul>
-                <li><a href="http://socketo.me/">Ratchet</a></li>
-            </ul>
+            <a href="http://socketo.me">http://socketo.me</a>
         </div>
     </div>
 </div>

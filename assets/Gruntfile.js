@@ -154,7 +154,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['copy','requirejs:build', 'less:build']);
-    grunt.registerTask('dev', ['copy','requirejs:dev', 'less:dev']);
+    grunt.registerTask('default', ['copy:main','requirejs:build', 'less:build']);
+    grunt.registerTask('dev', ['copy:main','requirejs:dev', 'less:dev']);
 
 };
