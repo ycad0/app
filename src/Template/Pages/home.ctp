@@ -31,7 +31,7 @@ $this->helpers()->load('GintonicCMS.Require');
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p class="lead">
-                    Built on top of CakePHP 3, GintonicCMS provides a robust and extensible core for your apps by wrapping the best apis and providing a flexible toolkit.
+                   Built on top of CakePHP 3, GintonicCMS provides a robust and extensible core for your apps by wrapping powerful tools and a seamless base. 
                 </p>
             </div>
         </div>
