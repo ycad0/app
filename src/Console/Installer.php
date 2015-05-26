@@ -97,6 +97,7 @@ class Installer
     {
         $paths = [
             'assets',
+            'config',
             'logs',
             'tmp',
             'tmp/cache',

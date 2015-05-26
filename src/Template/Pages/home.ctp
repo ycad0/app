@@ -41,30 +41,64 @@ $this->helpers()->load('GintonicCMS.Require');
     <h2>GintonicCMS Installation</h2>
     <div class="row text-center">
         <div class="col-md-3">
-            <button class="btn btn-lg btn-default">Configure Database</button>
+            <h2>Database</h2>
+            <?php
+                try {
+                    $connection = ConnectionManager::get('default');
+                    $connected = $connection->connect();
+                } catch (Exception $connectionError) {
+                    $connected = false;
+                    $errorMsg = $connectionError->getMessage();
+                    if (method_exists($connectionError, 'getAttributes')):
+                        $attributes = $connectionError->getAttributes();
+                        if (isset($errorMsg['message'])):
+                            $errorMsg .= '<br />' . $attributes['message'];
+                        endif;
+                    endif;
+                }
+            ?>
+            <?php if ($connected): ?>
+                <div class="alert alert-success">
+                    <p>CakePHP is able to connect to the database.</p>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger">
+                    <p>CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
+                </div>
+            <?php endif; ?>
+            <button class="btn btn-lg btn-block btn-default disabled">Configure Database</button>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-lg btn-default">Create Admin Account</button>
+            <h2>Base App</h2>
+            <button class="btn btn-lg btn-block btn-default disabled">Run Database Migration</button>
+            <button class="btn btn-lg btn-block btn-default disabled">Create Admin Account</button>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-lg btn-default">Setup MetaData</button>
+            <h2>Website Info</h2>
+            <button class="btn btn-lg btn-block btn-default disabled">Setup CMS Variables</button>
+            <button class="btn btn-lg btn-block btn-default disabled">Setup Meta Data</button>
         </div>
         <div class="col-md-3">
-
-            <div class="panel panel-default">
-            <panel-body>
-                <?php if (is_writable(ASSETS)): ?>
-                    <div class="alert alert-success">
-                        <p>Your assets directory is writable.</p>
-                    </div>
-                <?php else: ?>
-                    <div class="alert alert-danger">
-                        <p>Your assets directory is NOT writable.</p>
-                    </div>
-                <?php endif; ?>
-                <button class="btn btn-lg btn-default">Build Assets</button>
-            </panel-body>
-            </div>
+            <h2>Assets</h2>
+            <?php if (is_writable(WWW_ROOT)): ?>
+                <div class="alert alert-success">
+                    <p>Your webroot directory is writable.</p>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger">
+                    <p>Your webroot directory is NOT writable.</p>
+                </div>
+            <?php endif; ?>
+            <?php if (is_writable(ASSETS)): ?>
+                <div class="alert alert-success">
+                    <p>Your assets directory is writable.</p>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger">
+                    <p>Your assets directory is NOT writable.</p>
+                </div>
+            <?php endif; ?>
+            <button class="btn btn-lg btn-block btn-default disabled">Build Assets</button>
 
         </div>
     </div>
@@ -167,31 +201,6 @@ $this->helpers()->load('GintonicCMS.Require');
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h2>Database</h2>
-            <?php
-                try {
-                    $connection = ConnectionManager::get('default');
-                    $connected = $connection->connect();
-                } catch (Exception $connectionError) {
-                    $connected = false;
-                    $errorMsg = $connectionError->getMessage();
-                    if (method_exists($connectionError, 'getAttributes')):
-                        $attributes = $connectionError->getAttributes();
-                        if (isset($errorMsg['message'])):
-                            $errorMsg .= '<br />' . $attributes['message'];
-                        endif;
-                    endif;
-                }
-            ?>
-            <?php if ($connected): ?>
-                <div class="alert alert-success">
-                    <p>CakePHP is able to connect to the database.</p>
-                </div>
-            <?php else: ?>
-                <div class="alert alert-danger">
-                    <p>CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
     <div class="row">
