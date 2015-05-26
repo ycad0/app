@@ -13,7 +13,7 @@ The cms source code can be found here: [gintonicweb/GintonicCMS](https://github.
 
 If Composer is installed globally, run
 ```bash
-composer create-project gintoniweb/app="dev-master" [app_name]
+composer create-project gintonicweb/app="dev-master" [app_name]
 ```
 
 You should now be able to visit the path to where you installed the app and see
