@@ -87,7 +87,40 @@ module.exports = function(grunt) {
                     dest: 'src/js/lib/'
                 }
             ]
+        },
+        dev: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/dist/fonts',
+                    src: ['**'],
+                    dest: '../webroot/fonts/'
+                },
+                {
+                    expand: true,
+                    cwd: 'bower_components/fontawesome/fonts',
+                    src: ['**'],
+                    dest: '../webroot/fonts/'
+                },
+            ]
+        },
+        build: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/dist/fonts',
+                    src: ['**'],
+                    dest: '../webroot/fonts/'
+                },
+                {
+                    expand: true,
+                    cwd: 'bower_components/fontawesome/fonts',
+                    src: ['**'],
+                    dest: '../webroot/fonts/'
+                },
+            ]
         }
+
     },
     requirejs: {
         build:{
@@ -156,7 +189,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['copy:main','requirejs:build', 'less:build']);
-    grunt.registerTask('dev', ['copy:main','requirejs:dev', 'less:dev']);
+    grunt.registerTask('default', ['copy:main','requirejs:build', 'less:build', 'copy:build']);
+    grunt.registerTask('dev', ['copy:main','requirejs:dev', 'less:dev', 'copy:dev']);
 
 };
