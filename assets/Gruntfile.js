@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+    var gintonic = grunt.option('gintonic') ||"../vendor/gintonicweb/gintonic-cms/"; 
+
     // Project configuration.
     grunt.initConfig({
 
@@ -159,7 +161,7 @@ module.exports = function(grunt) {
         build: {
           options: {
               compress: true,
-              paths: ['./', grunt.option('gintonic')+'assets/src/less/']
+              paths: ['./', gintonic+'assets/src/less/']
           },
           files: {
             "../webroot/css/default.css": "src/less/default.less",
@@ -170,7 +172,7 @@ module.exports = function(grunt) {
         dev: {
           options: {
               compress: false,
-              paths: ['./', grunt.option('gintonic')+'assets/src/less/']
+              paths: ['./', gintonic+'assets/src/less/']
           },
           files: {
             "../webroot/css/default.css": "src/less/default.less",
