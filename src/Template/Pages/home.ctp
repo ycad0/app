@@ -61,26 +61,48 @@ $this->layout = 'GintonicCMS.bare';
                     endif;
                 }
             ?>
-            <?php if ($connected): ?>
+            <?php if ($connected):
+                $linkTitle = 'Edit Database Configuration';
+                $link = ['controller' => 'settings', 'action' => 'databaseSetup','edit'];
+                ?>
                 <div class="alert alert-success">
                     <p>CakePHP is able to connect to the database.</p>
                 </div>
-            <?php else: ?>
+            <?php else: 
+                $linkTitle = 'Configure Database';
+                $link = ['controller' => 'settings', 'action' => 'databaseSetup'];
+                ?>
                 <div class="alert alert-danger">
                     <p>CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
                 </div>
             <?php endif; ?>
-            <button class="btn btn-lg btn-block btn-default disabled">Configure Database</button>
+            <?php
+            echo $this->Html->link($linkTitle, $link, ['class' => 'btn btn-lg btn-block btn-default']);
+            ?>
         </div>
         <div class="col-md-3">
             <h2>Base App</h2>
-            <button class="btn btn-lg btn-block btn-default disabled">Run Database Migration</button>
-            <button class="btn btn-lg btn-block btn-default disabled">Create Admin Account</button>
+            <?php
+            echo $this->Html->link('Run Database Migration',
+                    ['controller' => 'settings', 'action' => 'migrate'],
+                    ['class' => 'btn btn-lg btn-block btn-default']);
+            
+            echo $this->Html->link('Create Admin Account',
+                    ['controller' => 'settings', 'action' => 'createAdmin'],
+                    ['class' => 'btn btn-lg btn-block btn-default']);
+            ?>
         </div>
         <div class="col-md-3">
             <h2>Website Info</h2>
-            <button class="btn btn-lg btn-block btn-default disabled">Setup CMS Variables</button>
-            <button class="btn btn-lg btn-block btn-default disabled">Setup Meta Data</button>
+            <?php
+            echo $this->Html->link('Setup CMS Variables',
+                    ['controller' => 'settings', 'action' => 'setupVariable'],
+                    ['class' => 'btn btn-lg btn-block btn-default']);
+            
+//            echo $this->Html->link('Setup Meta Data',
+//                    ['controller' => 'settings', 'action' => 'setupMetaData'],
+//                    ['class' => 'btn btn-lg btn-block btn-default']);
+            ?>
         </div>
         <div class="col-md-3">
             <h2>Assets</h2>
@@ -102,8 +124,11 @@ $this->layout = 'GintonicCMS.bare';
                     <p>Your assets directory is NOT writable.</p>
                 </div>
             <?php endif; ?>
-            <button class="btn btn-lg btn-block btn-default disabled">Build Assets</button>
-
+			<?= $this->Html->link(
+                'Build Assets',
+                ['controller' => 'settings', 'action' => 'assets'],
+                ['class' => 'btn btn-lg btn-block btn-default']
+            );?>
         </div>
     </div>
     <hr>
