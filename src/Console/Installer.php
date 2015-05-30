@@ -159,13 +159,32 @@ class Installer
             }
         };
 
+        $subwalker = function ($dir, $perms, $io) use (&$walker, $changePerms) {
+            $files = array_diff(scandir($dir), ['.', '..']);
+            foreach ($files as $file) {
+                $path = $dir . '/' . $file;
+
+                if (!is_dir($path)) {
+                    $changePerms($path, $perms, $io);
+                    continue;
+                }
+
+                $changePerms($path, $perms, $io);
+                $walker($path, $perms, $io);
+            }
+        };
+
         $worldWritable = bindec('0000000111');
         $walker($dir . '/assets', $worldWritable, $io);
-        $walker($dir . '/config', $worldWritable, $io);
-        $walker($dir . '/webroot', $worldWritable, $io);
         $walker($dir . '/tmp', $worldWritable, $io);
+        $walker($dir . '/webroot', $worldWritable, $io);
+        $subwalker($dir . '/assets', $worldWritable, $io);
+        $subwalker($dir . '/config', $worldWritable, $io);
+        $subwalker($dir . '/webroot', $worldWritable, $io);
+        $changePerms($dir . '/assets', $worldWritable, $io);
         $changePerms($dir . '/tmp', $worldWritable, $io);
         $changePerms($dir . '/logs', $worldWritable, $io);
+        $changePerms($dir . '/webroot', $worldWritable, $io);
     }
 
     /**
