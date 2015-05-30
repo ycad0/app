@@ -20,9 +20,7 @@ use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 
 $this->helpers()->load('GintonicCMS.Require');
-
-// TODO: show bare layout until the admin account has been created
-// Use Gintonic's gree in variables.less to create bare layout
+$this->Require->req('app/popover');
 $this->layout = 'GintonicCMS.bare';
 ?>
 
@@ -45,7 +43,7 @@ $this->layout = 'GintonicCMS.bare';
     <h2>GintonicCMS Installation</h2>
     <div class="row text-center">
         <div class="col-md-3">
-            <h2>Database</h2>
+            <h3>Database</h3>
             <?php
                 try {
                     $connection = ConnectionManager::get('default');
@@ -61,74 +59,135 @@ $this->layout = 'GintonicCMS.bare';
                     endif;
                 }
             ?>
-            <?php if ($connected):
-                $linkTitle = 'Edit Database Configuration';
-                $link = ['controller' => 'settings', 'action' => 'databaseSetup','edit'];
-                ?>
+            <?php if ($connected): ?>
                 <div class="alert alert-success">
-                    <p>CakePHP is able to connect to the database.</p>
-                </div>
-            <?php else: 
-                $linkTitle = 'Configure Database';
-                $link = ['controller' => 'settings', 'action' => 'databaseSetup'];
-                ?>
-                <div class="alert alert-danger">
-                    <p>CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
-                </div>
-            <?php endif; ?>
-            <?php
-            echo $this->Html->link($linkTitle, $link, ['class' => 'btn btn-lg btn-block btn-default']);
-            ?>
-        </div>
-        <div class="col-md-3">
-            <h2>Base App</h2>
-            <?php
-            echo $this->Html->link('Run Database Migration',
-                    ['controller' => 'settings', 'action' => 'migrate'],
-                    ['class' => 'btn btn-lg btn-block btn-default']);
-            
-            echo $this->Html->link('Create Admin Account',
-                    ['controller' => 'settings', 'action' => 'createAdmin'],
-                    ['class' => 'btn btn-lg btn-block btn-default']);
-            ?>
-        </div>
-        <div class="col-md-3">
-            <h2>Website Info</h2>
-            <?php
-            echo $this->Html->link('Setup CMS Variables',
-                    ['controller' => 'settings', 'action' => 'setupVariable'],
-                    ['class' => 'btn btn-lg btn-block btn-default']);
-            
-//            echo $this->Html->link('Setup Meta Data',
-//                    ['controller' => 'settings', 'action' => 'setupMetaData'],
-//                    ['class' => 'btn btn-lg btn-block btn-default']);
-            ?>
-        </div>
-        <div class="col-md-3">
-            <h2>Assets</h2>
-            <?php if (is_writable(WWW_ROOT)): ?>
-                <div class="alert alert-success">
-                    <p>Your webroot directory is writable.</p>
+                    <p>GintonicCMS is able to connect to the database.</p>
                 </div>
             <?php else: ?>
-                <div class="alert alert-danger">
-                    <p>Your webroot directory is NOT writable.</p>
-                </div>
+                <p>
+                    While a database setup is not required, we imagine that most 
+                    applications will use one.
+                </p>
+                <p>
+                    <?= $this->Html->link(
+                        'Configure Database',
+                        ['controller' => 'settings', 'action' => 'databaseSetup'],
+                        ['class' => 'btn btn-lg btn-block btn-primary']
+                    )?>
+                </p>
+                <p>Current status: 
+                    <a class="btn btn-xs btn-danger" 
+                        href="javascript:;"  
+                        data-toggle="popover" 
+                        title="Unable to connect" 
+                        data-content="<?= $errorMsg ?>">
+                            Unable to connect
+                    </a>
+                </p>
             <?php endif; ?>
-            <?php if (is_writable(ASSETS)): ?>
+        </div>
+        <div class="col-md-3">
+            <h3>GintonicCMS core</h3>
+            <?php
+                $coreInstall = "TODO: validate core install"
+            ?>
+            <?php if (empty($coreInstall)): ?>
                 <div class="alert alert-success">
-                    <p>Your assets directory is writable.</p>
+                    <p>GintonicCMS core is correctly installed.</p>
                 </div>
             <?php else: ?>
-                <div class="alert alert-danger">
-                    <p>Your assets directory is NOT writable.</p>
-                </div>
+                <p>
+                    To benefit from GintonicCMS core features you need to load
+                    our database schema and create an admin account.
+                </p>
+                <p>
+                    <?= $this->Html->link(
+                        'Install GintonicCMS',
+                        ['controller' => 'settings', 'action' => 'migrate'],
+                        ['class' => 'btn btn-lg btn-block btn-primary']
+                    )?>
+                </p>
+                <p>Current status: 
+                    <a class="btn btn-xs btn-danger" 
+                        href="javascript:;"  
+                        data-toggle="popover" 
+                        title="Core not installed" 
+                        data-content="<?= $coreInstall ?>">
+                            Not installed
+                    </a>
+                </p>
             <?php endif; ?>
-			<?= $this->Html->link(
-                'Build Assets',
-                ['controller' => 'settings', 'action' => 'assets'],
-                ['class' => 'btn btn-lg btn-block btn-default']
-            );?>
+        </div>
+        <div class="col-md-3">
+            <h3>Website Config</h3>
+            <?php
+                $websiteConfig = 'TODO: check for config values';
+            ?>
+            <?php if (empty($websiteConfig)): ?>
+                <div class="alert alert-success">
+                    <p>Website is correctly configured</p>
+                </div>
+            <?php else: ?>
+                <p>
+                    Setup your default website name, admin email address and
+                    the other default configuration values for your website.
+                </p>
+                <p>
+                    <?= $this->Html->link(
+                        'Setup Website Config',
+                        ['controller' => 'settings', 'action' => 'setupVariable'],
+                        ['class' => 'btn btn-lg btn-block btn-primary']
+                    )?>
+                </p>
+                <p>Current status: 
+                    <a class="btn btn-xs btn-danger" 
+                        href="javascript:;"  
+                        data-toggle="popover" 
+                        title="Not configured yet" 
+                        data-content="<?= $websiteConfig ?>">
+                            Not configured
+                    </a>
+                </p>
+            <?php endif; ?>
+        </div>
+        <div class="col-md-3">
+            <h2></h2>
+            <h3>Assets Builder</h3>
+            <?php
+                $assetsErrors = '';
+                if (!is_writable(WWW_ROOT)) {
+                    $assetsErrors .= 'Your webroot directory is NOT writable.';
+                }
+                if (is_writable(ASSETS)) {
+                    $assetsErrors .= 'Your assets directory is NOT writable.';
+                }
+            ?>
+            <?php if (empty($assetsErrors)): ?>
+                <div class="alert alert-success">
+                    <p>The assets builder is correctly setup</p>
+                </div>
+            <?php else: ?>
+                <p>
+                    Setup your default website name, admin email address and
+                    the other default configuration values for your website.
+                </p>
+                <p>
+                    <?= $this->Html->link(
+                        'Build Assets',
+                        ['controller' => 'settings', 'action' => 'assets'],
+                        ['class' => 'btn btn-lg btn-block btn-primary']
+                    );?>
+                </p>
+                <p>Current status: 
+                    <a class="btn btn-xs btn-danger" 
+                        href="javascript:;"  
+                        data-toggle="popover" 
+                        title="Assets builder is not installed" 
+                        data-content="<?= $assetsErrors ?>">
+                            Not installed
+                    </a>
+                </p>
+            <?php endif; ?>
         </div>
     </div>
     <hr>
