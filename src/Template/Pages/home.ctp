@@ -103,7 +103,7 @@ $this->layout = 'GintonicCMS.bare';
                 <p>
                     <?= $this->Html->link(
                         'Install GintonicCMS',
-                        ['controller' => 'settings', 'action' => 'migrate'],
+                        ['controller' => 'settings', 'action' => 'createAdmin'],
                         ['class' => 'btn btn-lg btn-block btn-primary']
                     )?>
                 </p>
