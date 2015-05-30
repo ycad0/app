@@ -96,8 +96,8 @@ class Installer
     public static function createWritableDirectories($dir, $io)
     {
         $paths = [
-            'assets',
             'config',
+            'assets',
             'logs',
             'tmp',
             'tmp/cache',
@@ -106,7 +106,7 @@ class Installer
             'tmp/cache/views',
             'tmp/sessions',
             'tmp/tests',
-            'webroot'
+            'webroot',
         ];
 
         foreach ($paths as $path) {
@@ -160,6 +160,9 @@ class Installer
         };
 
         $worldWritable = bindec('0000000111');
+        $walker($dir . '/assets', $worldWritable, $io);
+        $walker($dir . '/config', $worldWritable, $io);
+        $walker($dir . '/webroot', $worldWritable, $io);
         $walker($dir . '/tmp', $worldWritable, $io);
         $changePerms($dir . '/tmp', $worldWritable, $io);
         $changePerms($dir . '/logs', $worldWritable, $io);
