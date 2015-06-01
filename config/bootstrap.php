@@ -65,6 +65,9 @@ use Cake\Utility\Security;
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
+    Configure::load('datasources');
+    Configure::load('email');
+    Configure::load('gintonic');
 } catch (\Exception $e) {
     die($e->getMessage() . "\n");
 }

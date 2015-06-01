@@ -19,6 +19,8 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 
+Configure::load('gintonic');
+
 $this->helpers()->load('GintonicCMS.Require');
 $this->Require->req('app/popover');
 $this->layout = 'GintonicCMS.bare';
@@ -42,6 +44,35 @@ $this->layout = 'GintonicCMS.bare';
 <div class="container">
     <h2>GintonicCMS Installation</h2>
     <div class="row text-center">
+        <div class="col-md-3">
+            <h3>Website Config</h3>
+            <?php if (Configure::read('Gintonic.install.config')): ?>
+                <div class="alert alert-success">
+                    <p>Website is correctly configured</p>
+                </div>
+            <?php else: ?>
+                <p>
+                    Setup your default website name, admin email address and
+                    the other default configuration values for your website.
+                </p>
+                <p>
+                    <?= $this->Html->link(
+                        'Setup Website Config',
+                        ['controller' => 'settings', 'action' => 'configure'],
+                        ['class' => 'btn btn-lg btn-block btn-primary']
+                    )?>
+                </p>
+                <p>Current status: 
+                    <a class="btn btn-xs btn-danger" 
+                        href="javascript:;"  
+                        data-toggle="popover" 
+                        title="No config data" 
+                        data-content="Website data has not been configured">
+                            Not configured
+                    </a>
+                </p>
+            <?php endif; ?>
+        </div>
         <div class="col-md-3">
             <h3>Database</h3>
             <?php
@@ -89,9 +120,10 @@ $this->layout = 'GintonicCMS.bare';
         <div class="col-md-3">
             <h3>GintonicCMS core</h3>
             <?php
-                $coreInstall = "TODO: validate core install"
+                $migration = Configure::read('Gintonic.install.migration');
+                $admin = Configure::read('Gintonic.install.admin');
             ?>
-            <?php if (empty($coreInstall)): ?>
+            <?php if ($migration && $admin) : ?>
                 <div class="alert alert-success">
                     <p>GintonicCMS core is correctly installed.</p>
                 </div>
@@ -112,40 +144,8 @@ $this->layout = 'GintonicCMS.bare';
                         href="javascript:;"  
                         data-toggle="popover" 
                         title="Core not installed" 
-                        data-content="<?= $coreInstall ?>">
+                        data-content="Migration <?= $migration?'done':'missing' ?>, Admin account <?= $admin?'created':'missing' ?>">
                             Not installed
-                    </a>
-                </p>
-            <?php endif; ?>
-        </div>
-        <div class="col-md-3">
-            <h3>Website Config</h3>
-            <?php
-                $websiteConfig = 'TODO: check for config values';
-            ?>
-            <?php if (empty($websiteConfig)): ?>
-                <div class="alert alert-success">
-                    <p>Website is correctly configured</p>
-                </div>
-            <?php else: ?>
-                <p>
-                    Setup your default website name, admin email address and
-                    the other default configuration values for your website.
-                </p>
-                <p>
-                    <?= $this->Html->link(
-                        'Setup Website Config',
-                        ['controller' => 'settings', 'action' => 'setupVariable'],
-                        ['class' => 'btn btn-lg btn-block btn-primary']
-                    )?>
-                </p>
-                <p>Current status: 
-                    <a class="btn btn-xs btn-danger" 
-                        href="javascript:;"  
-                        data-toggle="popover" 
-                        title="Not configured yet" 
-                        data-content="<?= $websiteConfig ?>">
-                            Not configured
                     </a>
                 </p>
             <?php endif; ?>
@@ -154,15 +154,15 @@ $this->layout = 'GintonicCMS.bare';
             <h2></h2>
             <h3>Assets Builder</h3>
             <?php
-                $assetsErrors = '';
-                if (!is_writable(WWW_ROOT)) {
-                    $assetsErrors .= 'Your webroot directory is NOT writable.';
-                }
-                if (is_writable(ASSETS)) {
-                    $assetsErrors .= 'Your assets directory is NOT writable.';
-                }
+                $npm = Configure::read('Gintonic.install.npm');
+                $bower = Configure::read('Gintonic.install.bower');
+                $grunt = Configure::read('Gintonic.install.grunt');
+
+                $assetsErrors = $grunt?'':'Errors with grunt build';
+                $assetsErrors = $bower?$assetsErrors:'Bower dependencies not installed';
+                $assetsErrors = $npm?$assetsErrors:'Npm dependencies not installed';
             ?>
-            <?php if (empty($assetsErrors)): ?>
+            <?php if ($npm && $grunt && $bower): ?>
                 <div class="alert alert-success">
                     <p>The assets builder is correctly setup</p>
                 </div>
@@ -182,7 +182,7 @@ $this->layout = 'GintonicCMS.bare';
                     <a class="btn btn-xs btn-danger" 
                         href="javascript:;"  
                         data-toggle="popover" 
-                        title="Assets builder is not installed" 
+                        title="Assets builder" 
                         data-content="<?= $assetsErrors ?>">
                             Not installed
                     </a>
