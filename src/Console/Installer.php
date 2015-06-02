@@ -107,6 +107,7 @@ class Installer
             'tmp/sessions',
             'tmp/tests',
             'webroot',
+            'webroot/css',
         ];
 
         foreach ($paths as $path) {
@@ -159,7 +160,7 @@ class Installer
             }
         };
 
-        $subwalker = function ($dir, $perms, $io) use (&$walker, $changePerms) {
+        $subwalker = function ($dir, $perms, $io) use (&$subwalker, $changePerms) {
             $files = array_diff(scandir($dir), ['.', '..']);
             foreach ($files as $file) {
                 $path = $dir . '/' . $file;
@@ -170,7 +171,7 @@ class Installer
                 }
 
                 $changePerms($path, $perms, $io);
-                $walker($path, $perms, $io);
+                $subwalker($path, $perms, $io);
             }
         };
 
