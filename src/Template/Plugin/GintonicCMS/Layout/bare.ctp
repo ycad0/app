@@ -22,10 +22,8 @@
     </head>
     <body>
 
-        <div class="container">
-            <?php echo $this->Flash->render(); ?>
-            <?php echo $this->fetch('content'); ?>	                    
-        </div>
+        <?php echo $this->Flash->render(); ?>
+        <?php echo $this->fetch('content'); ?>	                    
 
         <?php echo $this->Require->req('jquery');?>
         <?php echo $this->Require->req('bootstrap');?>
