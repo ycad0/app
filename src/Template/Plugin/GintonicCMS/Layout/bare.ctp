@@ -12,7 +12,7 @@
             <?php echo $this->fetch('title') ?>
         </title>
 
-        <?php echo $this->Html->css('bare') ?>
+        <?php echo $this->Html->css('GintonicCMS.bare') ?>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
