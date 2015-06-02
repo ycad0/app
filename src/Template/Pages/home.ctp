@@ -35,15 +35,49 @@ $this->layout = 'GintonicCMS.bare';
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p class="lead">
-                   Built on top of CakePHP 3, GintonicCMS provides a robust and extensible core for your apps by wrapping powerful tools and a seamless base. 
+                   Built on top of CakePHP 3, GintonicCMS provides a robust and 
+                   extensible core for your apps by wrapping powerful tools and 
+                   a seamless base. 
                 </p>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-    <h2>GintonicCMS Installation</h2>
     <div class="row text-center">
+        <div class="col-md-6 col-md-offset-3">
+            <?php $lock = Configure::read('Gintonic.install.lock'); ?>
+            <?php if($lock): ?>
+                <p class="lead">
+                    Your website has beed installed and the setup wizard is now 
+                    locked. If you need to unlock it for some reason, you will 
+                    need to manually change the value from true to false in 
+                    <code>config/gintonic.php</code> under 
+                    <code>Gintonic.install.lock</code>
+                </p>
+                <?= $this->Html->link(
+                    'Locked',
+                    ['controller' => 'Settings', 'action' => 'lock'],
+                    ['class' => 'btn btn-lg btn-default btn-danger disabled']
+                )?>
+            <?php else: ?>
+                <p class="lead">
+                    Take a minute to follow the 4 steps below in order to install 
+                    and customize GintonicCMS up to your taste. Once you are done,
+                    lock the installer by pressing this button.
+                </p>
+                <?= $this->Html->link(
+                    'Lock',
+                    ['controller' => 'Settings', 'action' => 'lock'],
+                    ['class' => 'btn btn-lg btn-default btn-primary']
+                )?>
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row text-center" <?= $lock?'style="display:none"':''?>>
+        <hr>
         <div class="col-md-3">
             <h3>Website Config</h3>
             <?php if (Configure::read('Gintonic.install.config')): ?>
