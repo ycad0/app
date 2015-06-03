@@ -37,6 +37,8 @@ class Installer
 
         $rootDir = dirname(dirname(__DIR__));
 
+        static::copyBuild($rootDir, $io);
+        exit;
         static::createAppConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
 
@@ -66,6 +68,35 @@ class Installer
 
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
+        }
+    }
+
+    /**
+     * Copies the relevant build files in order to be able to override the default
+     * build
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function copyBuild($rootDir, $io)
+    {
+        $io->write('Copying less files from GintonicCMS to local build');
+        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/less/";
+        $destDir = "assets/src/less/";
+        $files = glob($sourceDir . "*.less");
+        foreach ($files as $file) {
+            $file = str_replace($sourceDir, '', $file);
+            copy($sourceDir . $file, $destDir . $file);
+        }
+
+        $io->write('Copying less files from GintonicCMS to local build');
+        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/js/";
+        $destDir = "assets/src/js/";
+        $files = glob($sourceDir . "*.js");
+        foreach ($files as $file) {
+            $file = str_replace($sourceDir, '', $file);
+            copy($sourceDir . $file, $destDir . $file);
         }
     }
 
@@ -106,8 +137,7 @@ class Installer
             'tmp/cache/views',
             'tmp/sessions',
             'tmp/tests',
-            'webroot',
-            'webroot/css',
+            'webroot'
         ];
 
         foreach ($paths as $path) {
