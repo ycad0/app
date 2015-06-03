@@ -1,8 +1,5 @@
 /vendor/*
 /config/app.php
-/config/email.php
-/config/gintonic.php
-/config/datasources.php
 /tmp/*
 /logs/*
 /assets/lib/*
@@ -12,4 +9,3 @@
 /assets/src/css/lib/*
 /assets/src/less/lib/*
 /assets/src/fonts/lib/*
-composer.lock
