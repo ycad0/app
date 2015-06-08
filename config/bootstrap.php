@@ -184,6 +184,7 @@ Request::addDetector('tablet', function ($request) {
  */
 
 Plugin::load('Migrations');
+Plugin::load('Acl', ['bootstrap' => true]);
 Plugin::load('GintonicCMS', ['autoload' => true, 'routes' => true]);
 
 // Only try to load DebugKit in development mode
