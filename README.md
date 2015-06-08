@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/gintonicweb/app/v/stable)](https://packagist.org/packages/gintonicweb/app) [![Total Downloads](https://poser.pugx.org/gintonicweb/app/downloads)](https://packagist.org/packages/gintonicweb/app) [![Latest Unstable Version](https://poser.pugx.org/gintonicweb/app/v/unstable)](https://packagist.org/packages/gintonicweb/app) [![License](https://poser.pugx.org/gintonicweb/app/license)](https://packagist.org/packages/gintonicweb/app)
 
-A skeleton for creating applications with [GintonicCMS](http://cms.gintonicweb.com)
+A skeleton for creating applications with [GintonicCMS](http://gintoniccms.com)
 
 The cms source code can be found here: [gintonicweb/GintonicCMS](https://github.com/gintonicweb/GintonicCMS).
 
