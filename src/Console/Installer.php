@@ -63,7 +63,6 @@ class Installer
             static::setFolderPermissions($rootDir, $io);
         }
 
-        $io->write('flag3');
         static::setSecuritySalt($rootDir, $io);
 
         if (class_exists('\Cake\Codeception\Console\Installer')) {
@@ -91,10 +90,23 @@ class Installer
             copy($sourceDir . $file, $destDir . $file);
         }
 
-        $io->write('Copying less files from GintonicCMS to local build');
+        $io->write('Copying js files from GintonicCMS to local build');
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/js/";
         $destDir = "assets/src/js/";
         $files = glob($sourceDir . "*.js");
+        foreach ($files as $file) {
+            $file = str_replace($sourceDir, '', $file);
+            copy($sourceDir . $file, $destDir . $file);
+        }
+
+        $io->write('Creating build setup');
+        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/";
+        $destDir = "assets/";
+        $files = [
+            $sourceDir . "bower.json",
+            $sourceDir . "Gruntfile.js",
+            $sourceDir . "package.json"
+        ];
         foreach ($files as $file) {
             $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
