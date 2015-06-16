@@ -84,7 +84,11 @@ class Installer
         $io->write('Copying less files from GintonicCMS to local build');
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/less/";
         $destDir = "assets/src/less/";
-        $files = glob($sourceDir . "*.less");
+        $files = [
+            $sourceDir . "admin/admin.less",
+            $sourceDir . "default/default.less",
+            $sourceDir . "default/bare.less"
+        ];
         foreach ($files as $file) {
             $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
