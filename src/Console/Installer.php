@@ -14,6 +14,7 @@
  */
 namespace App\Console;
 
+use Cake\Filesystem\Folder;
 use Composer\Script\Event;
 use Exception;
 
@@ -85,21 +86,21 @@ class Installer
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/less/";
         $destDir = "assets/src/less/";
         $files = [
-            $sourceDir . "admin/admin.less",
-            $sourceDir . "default/default.less",
-            $sourceDir . "default/bare.less"
+            "admin/admin.less",
+            "default/default.less",
+            "default/bare.less"
         ];
         foreach ($files as $file) {
-            $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
         }
 
         $io->write('Copying js files from GintonicCMS to local build');
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/js/";
         $destDir = "assets/src/js/";
-        $files = glob($sourceDir . "*.js");
+        $files = [
+            "config.js",
+        ];
         foreach ($files as $file) {
-            $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
         }
 
@@ -107,12 +108,11 @@ class Installer
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/";
         $destDir = "assets/";
         $files = [
-            $sourceDir . "bower.json",
-            $sourceDir . "Gruntfile.js",
-            $sourceDir . "package.json"
+            "bower.json",
+            "Gruntfile.js",
+            "package.json"
         ];
         foreach ($files as $file) {
-            $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
         }
     }
