@@ -38,7 +38,6 @@ class Installer
         $rootDir = dirname(dirname(__DIR__));
 
         static::copyBuild($rootDir, $io);
-        exit;
         static::createAppConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
 
@@ -69,6 +68,7 @@ class Installer
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
         }
+        $io->write('Install successful');
     }
 
     /**
@@ -90,10 +90,23 @@ class Installer
             copy($sourceDir . $file, $destDir . $file);
         }
 
-        $io->write('Copying less files from GintonicCMS to local build');
+        $io->write('Copying js files from GintonicCMS to local build');
         $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/js/";
         $destDir = "assets/src/js/";
         $files = glob($sourceDir . "*.js");
+        foreach ($files as $file) {
+            $file = str_replace($sourceDir, '', $file);
+            copy($sourceDir . $file, $destDir . $file);
+        }
+
+        $io->write('Creating build setup');
+        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/";
+        $destDir = "assets/";
+        $files = [
+            $sourceDir . "bower.json",
+            $sourceDir . "Gruntfile.js",
+            $sourceDir . "package.json"
+        ];
         foreach ($files as $file) {
             $file = str_replace($sourceDir, '', $file);
             copy($sourceDir . $file, $destDir . $file);
