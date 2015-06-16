@@ -38,7 +38,6 @@ class Installer
         $rootDir = dirname(dirname(__DIR__));
 
         static::copyBuild($rootDir, $io);
-        exit;
         static::createAppConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
 
@@ -64,11 +63,13 @@ class Installer
             static::setFolderPermissions($rootDir, $io);
         }
 
+        $io->write('flag3');
         static::setSecuritySalt($rootDir, $io);
 
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
         }
+        $io->write('Install successful');
     }
 
     /**
