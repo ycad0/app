@@ -15,5 +15,8 @@ return [
             'grunt' => false,
             'lock' => false,
         ],
+        'website' => [
+            'name' => 'GintonicCMS'
+        ]
     ],
 ];
