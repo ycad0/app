@@ -1,0 +1,5 @@
+
+config.js
+----------------
+/var/www/cms/assets/bower_components/requirejs/require.js
+config.js
