@@ -1,5 +1,8 @@
 /vendor/*
 /config/app.php
+/config/email.php
+/config/datasources.php
+/config/gintonic.php
 /tmp/*
 /logs/*
 /assets/lib/*
