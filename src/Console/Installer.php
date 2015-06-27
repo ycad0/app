@@ -126,11 +126,17 @@ class Installer
      */
     public static function createAppConfig($dir, $io)
     {
-        $appConfig = $dir . '/config/app.php';
-        $defaultConfig = $dir . '/config/app.default.php';
-        if (!file_exists($appConfig)) {
-            copy($defaultConfig, $appConfig);
-            $io->write('Created `config/app.php` file');
+        $files = [
+            '/config/app.php' => '/config/app.default.php',
+            '/config/email.php' => '/config/email.default.php',
+            '/config/datasources.php' => '/config/datasources.default.php',
+            '/config/gintonic.php' => '/config/gintonic.default.php',
+        ];
+        foreach ($files as $local => $default) {
+            if (!file_exists($dir . $local)) {
+                copy($dir . $default, $dir . $local);
+                $io->write('Created `' . $local . '` file');
+            }
         }
     }
 
