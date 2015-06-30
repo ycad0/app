@@ -11,6 +11,32 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
+    bowerRequirejs: {
+        options: {
+            transitive: true
+        },
+        target: {
+            rjsConfig: 'webroot/main.js'
+        }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          appDir:"webroot",
+          baseUrl:"./",
+          dir:"webroot/js",
+          stubModules: ['jsx', 'text', 'JSXTransformer'],
+          paths: {
+              requireLib: '../node_modules/requirejs/require',
+          },
+          modules:[{
+            name: "main",
+            include: ["requireLib"]
+          }],
+          fileExclusionRegExp: /^.*\.(?!js$|jsx$)[^.]+$/,
+        }
+      }
+    },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -76,8 +102,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-bower-requirejs');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['bowerRequirejs','requirejs']);
 
 };

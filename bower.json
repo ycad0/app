@@ -10,8 +10,10 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
+    "webroot/lib",
     "tests"
-  ]
+  ],
+  "dependencies": {
+      "AdminLte": "gintonicweb/AdminLte"
+  }
 }
