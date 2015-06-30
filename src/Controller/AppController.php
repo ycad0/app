@@ -38,6 +38,6 @@ class AppController extends GintonicAppController
     public function initialize()
     {
         parent::initialize();
-        $this->loadComponent('Flash');
+        $this->layout = "GintonicCMS.default";
     }
 }
