@@ -1,0 +1,17 @@
+{
+  "name": "GintonicCMS",
+  "version": "0.0.0",
+  "homepage": "http://gintoniccms.com",
+  "authors": [
+    "Philippe Lafrance"
+  ],
+  "description": "GintonicCMS plugin for CakePHP",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
