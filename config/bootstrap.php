@@ -185,6 +185,7 @@ Request::addDetector('tablet', function ($request) {
 
 Plugin::load('Migrations');
 Plugin::load('GintonicCMS', ['autoload' => true, 'routes' => true]);
+Plugin::load('AdminLTE');
 Plugin::load('Acl', ['bootstrap' => true]);
 Plugin::load('Crud');
 
