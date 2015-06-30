@@ -1,15 +1,14 @@
-/vendor/*
-/config/app.php
+GintonicCMS
+
 /config/email.php
 /config/datasources.php
 /config/gintonic.php
+/webroot/lib/*
+/node_modules/*
+
+CakePHP 3
+
+/vendor/*
+/config/app.php
 /tmp/*
 /logs/*
-/assets/lib/*
-/assets/bower_components/*
-/assets/node_modules/*
-/assets/src/js/lib/*
-/assets/src/css/lib/*
-/assets/src/less/lib/*
-/assets/src/fonts/lib/*
-node_modules
