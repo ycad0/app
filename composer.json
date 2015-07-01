@@ -11,7 +11,8 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "gintonicweb/gintonic-cms": "dev-master",
-        "gintonicweb/admin-lte": "dev-master"
+        "gintonicweb/admin-lte": "dev-master",
+        "gintonicweb/bootstrap": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",

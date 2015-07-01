@@ -1,17 +1,15 @@
-requirejs.config({
-    baseUrl: '/',
-    urlArgs: 'bust=0',
-    deps: [
-        'lib/AdminLte/webroot/main'
-    ],
-    paths: {
-        bootstrap: 'lib/bootstrap/dist/js/bootstrap',
-        jquery: 'lib/jquery/dist/jquery'
-    },
-    shim: {
+require.config({
+  baseUrl: '/',
+  urlArgs: 'bust=0',
+  paths: {
+    admin_lte: 'js/lib/AdminLte/webroot/app',
+    bootstrap: 'lib/bootstrap/dist/js/bootstrap',
+    jquery: 'lib/jquery/dist/jquery'
+  },
+  shim: {
 
-    },
-    packages: [
+  },
+  packages: [
 
-    ]
+  ]
 });
