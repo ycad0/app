@@ -16,18 +16,18 @@ module.exports = function(grunt) {
             transitive: true
         },
         target: {
-            rjsConfig: 'webroot/main.js'
+            rjsConfig: 'assets/js/main.js'
         }
     },
     requirejs: {
       compile: {
         options: {
-          appDir:"webroot",
+          appDir:"assets/js",
           baseUrl:"./",
           dir:"webroot/js",
           stubModules: ['jsx', 'text', 'JSXTransformer'],
           paths: {
-              requireLib: '../node_modules/requirejs/require',
+              requireLib: '../../node_modules/requirejs/require',
           },
           modules:[{
             name: "main",

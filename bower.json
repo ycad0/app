@@ -14,8 +14,6 @@
     "tests"
   ],
   "dependencies": {
-      "AdminLte": "gintonicweb/AdminLte",
-      "bootstrap-theme": "gintonicweb/bootstrap",
-      "GintonicCMS": "gintonicweb/GintonicCMS"
+      "AdminLte": "gintonicweb/AdminLte"
   }
 }
