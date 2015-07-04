@@ -184,9 +184,9 @@ Request::addDetector('tablet', function ($request) {
  */
 
 Plugin::load('Migrations');
-Plugin::load('GintonicCMS', ['autoload' => true, 'routes' => true]);
-Plugin::load('admin-theme', ['autoload' => true]);
-Plugin::load('twbs-theme', ['autoload' => true]);
+Plugin::load('GintonicCMS', ['routes' => true]);
+Plugin::load('admin-theme');
+Plugin::load('twbs-theme');
 Plugin::load('Acl', ['bootstrap' => true]);
 Plugin::load('Crud');
 

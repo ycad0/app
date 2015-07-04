@@ -10,9 +10,7 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
-        "gintonicweb/gintonic-cms": "dev-master",
-        "gintonicweb/admin-theme": "dev-master",
-        "gintonicweb/twbs-theme": "dev-master"
+        "gintonicweb/gintonic-cms": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",
