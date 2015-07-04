@@ -34,7 +34,12 @@
     },
     "scripts": {
         "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+        "post-autoload-dump": [
+            "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+            "npm install",
+            "bower install --allow-root",
+            "grunt"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
