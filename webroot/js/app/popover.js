@@ -1,0 +1,1 @@
+define(["require","jquery","bootstrap"],function(e){var t=e("jquery"),n=e("bootstrap");t(function(){t('[data-toggle="popover"]').popover()})});

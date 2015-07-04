@@ -187,6 +187,7 @@ Plugin::load('Migrations');
 Plugin::load('GintonicCMS', ['autoload' => true, 'routes' => true]);
 Plugin::load('AdminLte');
 Plugin::load('Acl', ['bootstrap' => true]);
+Plugin::load('Bootstrap');
 Plugin::load('Crud');
 
 // Only try to load DebugKit in development mode
