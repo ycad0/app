@@ -38,7 +38,6 @@ class Installer
 
         $rootDir = dirname(dirname(__DIR__));
 
-        static::copyBuild($rootDir, $io);
         static::createAppConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
 
@@ -70,51 +69,6 @@ class Installer
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
         }
         $io->write('Install successful');
-    }
-
-    /**
-     * Copies the relevant build files in order to be able to override the default
-     * build
-     *
-     * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
-     * @return void
-     */
-    public static function copyBuild($rootDir, $io)
-    {
-        $io->write('Copying less files from GintonicCMS to local build');
-        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/less/";
-        $destDir = "assets/src/less/";
-        $files = [
-            "admin/admin.less",
-            "default/default.less",
-            "default/bare.less"
-        ];
-        foreach ($files as $file) {
-            copy($sourceDir . $file, $destDir . $file);
-        }
-
-        $io->write('Copying js files from GintonicCMS to local build');
-        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/src/js/";
-        $destDir = "assets/src/js/";
-        $files = [
-            "config.js",
-        ];
-        foreach ($files as $file) {
-            copy($sourceDir . $file, $destDir . $file);
-        }
-
-        $io->write('Creating build setup');
-        $sourceDir = "vendor/gintonicweb/gintonic-cms/assets/";
-        $destDir = "assets/";
-        $files = [
-            "bower.json",
-            "Gruntfile.js",
-            "package.json"
-        ];
-        foreach ($files as $file) {
-            copy($sourceDir . $file, $destDir . $file);
-        }
     }
 
     /**
