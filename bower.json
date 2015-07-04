@@ -15,7 +15,7 @@
   ],
   "dependencies": {
       "gintonic-cms": "gintonicweb/GintonicCMS",
-      "admin-theme": "gintonicweb/AdminLte",
-      "twbs-theme": "gintonicweb/bootstrap"
+      "admin-theme": "gintonicweb/admin-theme",
+      "twbs-theme": "gintonicweb/twbs-theme"
   }
 }
