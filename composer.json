@@ -37,7 +37,7 @@
         "post-install-cmd": [
             "App\\Console\\Installer::postInstall",
             "npm install",
-            "bower install",
+            "bower install --allow-root",
             "grunt"
         ],
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
