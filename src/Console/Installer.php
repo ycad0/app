@@ -277,7 +277,7 @@ class Installer
     public static function assertGrunt($io)
     {
         exec('grunt', $output, $errCode);
-        if ($errCode) {
+        if (!count($output)) {
             throw new Exception('grunt-cli is required: http://gruntjs.com/getting-started');
         }
         $io->write('grunt-cli is installed');
