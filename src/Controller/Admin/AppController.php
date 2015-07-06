@@ -12,10 +12,10 @@
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
-use GintonicCMS\Controller\AppController as GintonicAppController;
+use GintonicCMS\Controller\Admin\AppController as GintonicAppController;
 
 /**
  * Application Controller
@@ -27,5 +27,5 @@ use GintonicCMS\Controller\AppController as GintonicAppController;
  */
 class AppController extends GintonicAppController
 {
-    public $theme = "TwbsTheme";
+    public $theme = "AdminTheme";
 }

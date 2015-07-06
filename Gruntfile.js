@@ -31,7 +31,8 @@ module.exports = function(grunt) {
               requireLib: '../../node_modules/requirejs/require',
               gintoniccms: '../../vendor/gintonicweb/gintonic-cms/assets/js/main',
               adminTheme: '../../vendor/gintonicweb/admin-theme/assets/js/main',
-              twbsTheme: '../../vendor/gintonicweb/twbs-theme/assets/js/main'
+              twbsTheme: '../../vendor/gintonicweb/twbs-theme/assets/js/main',
+
           },
           modules:[{
             name: "main",
@@ -39,7 +40,7 @@ module.exports = function(grunt) {
                 "requireLib",
                 "gintoniccms",
                 "adminTheme",
-                "twbsTheme"
+                "twbsTheme",
             ]
           }],
           noBuildTxt: true
