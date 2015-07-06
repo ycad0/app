@@ -222,4 +222,64 @@ class Installer
         }
         $io->write('Unable to update Security.salt value.');
     }
+
+    /**
+     * Checks for dependencies
+     *
+     * @param \Composer\Script\Event $event The composer event object.
+     * @throws \Exception Exception raised by validator.
+     * @return void
+     */
+    public static function preInstall(Event $event)
+    {
+        $io = $event->getIO();
+
+        $rootDir = dirname(dirname(__DIR__));
+
+        static::assertNpm($io);
+        static::assertBower($io);
+        static::assertGrunt($io);
+    }
+
+    /**
+     * Asserts that npm is installed
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function assertNpm($io)
+    {
+        exec('npm', $output, $errCode);
+        if ($errCode) {
+            throw new Exception('npm is required: https://github.com/npm/npm#super-easy-install');
+        }
+        $io->write('npm is installed');
+    }
+
+    /**
+     * Asserts that npm is installed
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function assertBower($io)
+    {
+        exec('bower', $output, $errCode);
+        if ($errCode) {
+            throw new Exception('bower is required: http://bower.io/');
+        }
+        $io->write('npm is installed');
+    }
+
+    /**
+     * Asserts that npm is installed
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function assertGrunt($io)
+    {
+        exec('grunt', $output, $errCode);
+        if ($errCode) {
+            throw new Exception('grunt-cli is required: http://gruntjs.com/getting-started');
+        }
+        $io->write('npm is installed');
+    }
 }

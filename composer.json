@@ -33,7 +33,13 @@
         }
     },
     "scripts": {
-        "post-install-cmd": "App\\Console\\Installer::postInstall",
+        "pre-install-cmd": "App\\Console\\Installer::preInstall",
+        "post-install-cmd": [
+            "App\\Console\\Installer::postInstall",
+            "npm install",
+            "bower install",
+            "grunt"
+        ],
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
     },
     "minimum-stability": "dev",
