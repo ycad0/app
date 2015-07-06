@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     bowerRequirejs: {
         options: {
             baseUrl:"assets/",
-            transitive: true
+            transitive: false
         },
         target: {
             rjsConfig: 'assets/js/main.js'
@@ -29,10 +29,18 @@ module.exports = function(grunt) {
           stubModules: ['jsx', 'text', 'JSXTransformer'],
           paths: {
               requireLib: '../../node_modules/requirejs/require',
+              gintoniccms: '../../vendor/gintonicweb/gintonic-cms/assets/js/main',
+              adminTheme: '../../vendor/gintonicweb/admin-theme/assets/js/main',
+              twbsTheme: '../../vendor/gintonicweb/twbs-theme/assets/js/main'
           },
           modules:[{
             name: "main",
-            include: ["requireLib"]
+            include: [
+                "requireLib",
+                "gintoniccms",
+                "adminTheme",
+                "twbsTheme"
+            ]
           }],
           noBuildTxt: true
         }
@@ -41,7 +49,20 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, cwd: './assets/vendor/', src: ['**'], dest: 'webroot/vendor/'},
+          {
+            expand: true,
+            cwd: './assets/vendor/',
+            src: ['**'],
+            dest: 'webroot/vendor/'
+          },
+          {
+            expand: true,
+            cwd: './assets/vendor/',
+            src: ['**/fonts/**'],
+            dest: 'webroot/fonts/',
+            flatten: true,
+            filter: "isFile"
+          },
         ],
       },
     },
@@ -117,6 +138,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
 
   // Default task.
-  grunt.registerTask('default', ['bowerRequirejs','requirejs', 'copy']);
+  grunt.registerTask('default', ['bowerRequirejs', 'requirejs', 'copy']);
 
 };

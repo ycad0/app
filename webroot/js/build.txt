@@ -3,3 +3,6 @@ main.js
 ----------------
 /var/www/cms/node_modules/requirejs/require.js
 main.js
+/var/www/cms/vendor/gintonicweb/gintonic-cms/assets/js/main.js
+/var/www/cms/vendor/gintonicweb/admin-theme/assets/js/main.js
+/var/www/cms/vendor/gintonicweb/twbs-theme/assets/js/main.js
