@@ -262,11 +262,11 @@ class Installer
      */
     public static function assertBower($io)
     {
-        exec('bower', $output, $errCode);
+        exec('bower --allow-root', $output, $errCode);
         if ($errCode) {
             throw new Exception('bower is required: http://bower.io/');
         }
-        $io->write('npm is installed');
+        $io->write('bower is installed');
     }
 
     /**
@@ -280,6 +280,6 @@ class Installer
         if ($errCode) {
             throw new Exception('grunt-cli is required: http://gruntjs.com/getting-started');
         }
-        $io->write('npm is installed');
+        $io->write('grunt-cli is installed');
     }
 }
