@@ -33,7 +33,6 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": "App\\Console\\Installer::preInstall",
         "post-install-cmd": [
             "App\\Console\\Installer::postInstall",
             "npm install",
