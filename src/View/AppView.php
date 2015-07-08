@@ -14,6 +14,7 @@
 namespace App\View;
 
 use Cake\View\View;
+use Cake\Core\App;
 use Cake\Core\Plugin;
 use Cake\Utility\Inflector;
 
@@ -23,36 +24,17 @@ use Cake\Utility\Inflector;
 class AppView extends View
 {
     /**
-     * This method have been overrided to allow the AppController
-     * to override a plugin layout in all circumstances. The
-     * default behavior of cakephp would load the plugins' layout
-     * for plugin controllers, even though our app controller 
-     * specifies a name without the plugin prefix.
+     * Return all possible paths to find view files in order
+     *
+     * @param string|null $plugin Optional plugin name to scan for view files.
+     * @param bool $cached Set to false to force a refresh of view paths. Default true.
+     * @return array paths
      */
-    protected function _getLayoutFileName($name = null)
+    protected function _paths($plugin = null, $cached = true)
     {
-        if ($name === null) {
-            $name = $this->layout;
+        if($plugin == 'GintonicCMS'){
+            return App::path('Template') + parent::_paths($plugin, $cached);
         }
-        $subDir = null;
-
-        if ($this->layoutPath !== null) {
-            $subDir = $this->layoutPath . DS;
-        }
-        list($plugin, $name) = $this->pluginSplit($name, false);
-
-        $layoutPaths = $this->_getSubPaths('Layout' . DS . $subDir);
-
-        foreach ($this->_paths($plugin) as $path) {
-            foreach ($layoutPaths as $layoutPath) {
-                $currentPath = $path . $layoutPath;
-                if (file_exists($currentPath . $name . $this->_ext)) {
-                    return $this->_checkFilePath($currentPath . $name . $this->_ext, $currentPath);
-                }
-            }
-        }
-        throw new Exception\MissingLayoutException([
-            'file' => $layoutPaths[0] . $name . $this->_ext
-        ]);
+        return parent::_paths($plugin, $cached);
     }
 }
