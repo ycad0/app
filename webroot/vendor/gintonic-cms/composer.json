@@ -1,0 +1,46 @@
+{
+    "name": "gintonicweb/gintonic-cms",
+    "description": "GintonicCMS plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "homepage": "http://gintoniccms.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philippe Lafrance",
+            "homepage": "http://phillafrance.com",
+            "role": "Author"
+        },
+        {
+            "name": "GintonicWeb Contributors",
+            "homepage": "http://github.com/gintonicweb/GintonicCMS/graphs/contributors"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/gintonicweb/GintonicCMS/issues",
+        "source": "https://github.com/gintonicweb/GintonicCMS"
+    },
+    "require": {
+        "php": ">=5.4",
+        "cakephp/cakephp": "~3.0",
+        "cakephp/acl": "dev-master",
+        "FriendsOfCake/crud": "~4.0",
+        "gintonicweb/admin-theme": "dev-master",
+        "gintonicweb/twbs-theme": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "cakephp/cakephp-codesniffer": "2.*",
+        "friendsofcake/cakephp-test-utilities": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "GintonicCMS\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
+            "GintonicCMS\\Test\\": "tests"
+        }
+    }
+}
