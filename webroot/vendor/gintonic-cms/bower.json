@@ -1,0 +1,25 @@
+{
+  "name": "GintonicCMS",
+  "version": "0.0.0",
+  "homepage": "http://gintoniccms.com",
+  "authors": [
+    "Philippe Lafrance <phil.laf@gmail.com>"
+  ],
+  "description": "A robust and extensible core for web applications",
+  "main": ["webroot"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "config",
+    "src/.*",
+    "composer/.json",
+    "node_modules",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "bootstrap": "*",
+    "react": "~0.13.3",
+    "jsx-requirejs-plugin": "~0.6.0"
+  }
+}
