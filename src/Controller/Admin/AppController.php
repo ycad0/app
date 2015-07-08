@@ -27,5 +27,4 @@ use GintonicCMS\Controller\Admin\AppController as GintonicAppController;
  */
 class AppController extends GintonicAppController
 {
-    public $theme = "AdminTheme";
 }

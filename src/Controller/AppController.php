@@ -27,5 +27,4 @@ use GintonicCMS\Controller\AppController as GintonicAppController;
  */
 class AppController extends GintonicAppController
 {
-    public $theme = "TwbsTheme";
 }
