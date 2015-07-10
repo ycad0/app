@@ -8,10 +8,11 @@
   "description": "GintonicCMS plugin for CakePHP",
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "webroot/lib",
-    "tests"
+    "*",
+    "!assets/",
+    "!assets/**",
+    "!webroot/",
+    "!webroot/**"
   ],
   "dependencies": {
       "gintonic-cms": "gintonicweb/GintonicCMS",
