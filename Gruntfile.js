@@ -14,7 +14,13 @@ module.exports = function(grunt) {
     bowerRequirejs: {
         options: {
             baseUrl:"assets/",
-            transitive: false
+            transitive: false,
+            exclude: [
+                'react',
+                'jsxTransformer',
+                'jsx-requirejs-plugin',
+                'requirejs-text'
+            ],
         },
         target: {
             rjsConfig: 'assets/js/main.js'
@@ -118,6 +124,20 @@ module.exports = function(grunt) {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
+      },
+      requirejs: {
+        files: [
+            "assets/js/**/*",
+            "vendor/gintonicweb/gintonic-cms/assets/js/**/*"
+        ],
+        tasks: ["requirejs"],
+      },  
+      less: {
+          files: [
+            "assets/less/**/*",
+            "vendor/gintonicweb/gintonic-cms/assets/less/**/*"
+          ],
+          tasks: ["less"],
       },
       lib_test: {
         files: '<%= jshint.lib_test.src %>',
