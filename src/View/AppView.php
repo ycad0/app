@@ -14,22 +14,27 @@
 namespace App\View;
 
 use Cake\View\View;
+use Cake\Core\App;
+use Cake\Core\Plugin;
+use Cake\Utility\Inflector;
 
 /**
  * App View class
  */
 class AppView extends View
 {
-
     /**
-     * Initialization hook method.
+     * Return all possible paths to find view files in order
      *
-     * For e.g. use this method to load a helper for all views:
-     * `$this->loadHelper('Html');`
-     *
-     * @return void
+     * @param string|null $plugin Optional plugin name to scan for view files.
+     * @param bool $cached Set to false to force a refresh of view paths. Default true.
+     * @return array paths
      */
-    public function initialize()
+    protected function _paths($plugin = null, $cached = true)
     {
+        if($plugin == 'GintonicCMS'){
+            return App::path('Template') + parent::_paths($plugin, $cached);
+        }
+        return parent::_paths($plugin, $cached);
     }
 }

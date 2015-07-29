@@ -14,7 +14,13 @@ module.exports = function(grunt) {
     bowerRequirejs: {
         options: {
             baseUrl:"assets/",
-            transitive: false
+            transitive: false,
+            exclude: [
+                'react',
+                'jsxTransformer',
+                'jsx-requirejs-plugin',
+                'requirejs-text'
+            ],
         },
         target: {
             rjsConfig: 'assets/js/main.js'
@@ -31,7 +37,8 @@ module.exports = function(grunt) {
               requireLib: '../../node_modules/requirejs/require',
               gintoniccms: '../../vendor/gintonicweb/gintonic-cms/assets/js/main',
               adminTheme: '../../vendor/gintonicweb/admin-theme/assets/js/main',
-              twbsTheme: '../../vendor/gintonicweb/twbs-theme/assets/js/main'
+              twbsTheme: '../../vendor/gintonicweb/twbs-theme/assets/js/main',
+
           },
           modules:[{
             name: "main",
@@ -39,7 +46,7 @@ module.exports = function(grunt) {
                 "requireLib",
                 "gintoniccms",
                 "adminTheme",
-                "twbsTheme"
+                "twbsTheme",
             ]
           }],
           noBuildTxt: true
@@ -117,6 +124,20 @@ module.exports = function(grunt) {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
+      },
+      requirejs: {
+        files: [
+            "assets/js/**/*",
+            "vendor/gintonicweb/gintonic-cms/assets/js/**/*"
+        ],
+        tasks: ["requirejs"],
+      },  
+      less: {
+          files: [
+            "assets/less/**/*",
+            "vendor/gintonicweb/gintonic-cms/assets/less/**/*"
+          ],
+          tasks: ["less"],
       },
       lib_test: {
         files: '<%= jshint.lib_test.src %>',
