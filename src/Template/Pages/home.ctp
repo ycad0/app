@@ -23,7 +23,6 @@ Configure::load('gintonic');
 
 $this->helpers()->load('GintonicCMS.Require');
 $this->Require->req('app/popover');
-$this->Require->req('eonasdan-bootstrap-datetimepicker');
 ?>
 
 <div class="jumbotron">
