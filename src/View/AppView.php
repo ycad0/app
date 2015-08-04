@@ -18,45 +18,11 @@ use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Utility\Inflector;
-use CrudView\View\CrudView;
+use GintonicCMS\View\AppView as BaseAppView;
 
 /**
  * App View class
  */
-class AppView extends CrudView
+class AppView extends BaseAppView 
 {
-    public $layout = 'default';
-    /**
-     * Return all possible paths to find view files in order
-     *
-     * @param string|null $plugin Optional plugin name to scan for view files.
-     * @param bool $cached Set to false to force a refresh of view paths. Default true.
-     * @return array paths
-     */
-    //protected function _paths($plugin = null, $cached = true)
-    //{
-    //    if($plugin == 'GintonicCMS'){
-    //        return App::path('Template') + parent::_paths($plugin, $cached);
-    //    }
-    //    return parent::_paths($plugin, $cached);
-    //}
-    
-    /**
-     * Initializes the crud-view template paths
-     *
-     * @return void
-     */
-    protected function _setupPaths()
-    {
-        $paths = Configure::read('App.paths.templates');
-
-        $extraPaths = Configure::read('CrudView.templatePaths');
-        if (!empty($extraPaths)) {
-            $paths = array_merge($paths, (array)$extraPaths);
-        }
-        $paths[] = Plugin::classPath('GintonicCMS') . 'Template' . DS;
-        $paths[] = Plugin::classPath('CrudView') . 'Template' . DS;
-
-        Configure::write('App.paths.templates', $paths);
-    }
 }
