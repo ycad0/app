@@ -185,9 +185,12 @@ Request::addDetector('tablet', function ($request) {
 
 Plugin::load('Acl', ['bootstrap' => true]);
 Plugin::load('AdminTheme');
+Plugin::load('BootstrapUI');
 Plugin::load('Crud');
+Plugin::load('CrudView');
 Plugin::load('GintonicCMS', ['routes' => true]);
 Plugin::load('Migrations');
+Plugin::load('Search');
 Plugin::load('TwbsTheme');
 
 // Only try to load DebugKit in development mode
