@@ -15,8 +15,6 @@
     "!webroot/**"
   ],
   "dependencies": {
-      "gintonic-cms": "gintonicweb/GintonicCMS",
-      "admin-theme": "gintonicweb/admin-theme",
-      "twbs-theme": "gintonicweb/twbs-theme"
+      "gintonic-cms": "gintonicweb/GintonicCMS"
   }
 }
