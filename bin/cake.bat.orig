@@ -1,6 +1,10 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
+<<<<<<< HEAD
+:: Bake is a shell script for running CakePHP bake script
+=======
 :: Cake is a Windows batch script for invoking CakePHP shell commands
+>>>>>>> 30f5439aa31a3c68a59d4e4bc62789e885c83616
 ::
 :: CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
 :: Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)

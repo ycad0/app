@@ -148,6 +148,8 @@ return [
     ],
 
     /**
+<<<<<<< HEAD
+=======
      * Email configuration.
      *
      * By defining transports separately from delivery profiles you can easily
@@ -263,6 +265,10 @@ return [
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
+    ],
+
+    /**
+>>>>>>> 30f5439aa31a3c68a59d4e4bc62789e885c83616
      * Configures logging options
      */
     'Log' => [

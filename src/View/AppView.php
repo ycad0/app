@@ -18,11 +18,10 @@ use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Utility\Inflector;
-use GintonicCMS\View\AppView as BaseAppView;
 
 /**
  * App View class
  */
-class AppView extends BaseAppView 
+class AppView extends View 
 {
 }
