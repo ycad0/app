@@ -192,6 +192,7 @@ Plugin::load('GintonicCMS', ['routes' => true]);
 Plugin::load('Migrations');
 Plugin::load('Search');
 Plugin::load('TwbsTheme');
+Plugin::load('Payments');
 
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
