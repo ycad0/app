@@ -42,3 +42,4 @@
 *.woff2 binary
 *.psd binary
 *.swf binary
+*.exe binary
